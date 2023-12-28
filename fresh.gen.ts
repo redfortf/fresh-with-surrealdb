@@ -7,27 +7,27 @@ import * as $_middleware from "./routes/_middleware.ts";
 import * as $api_students_id_ from "./routes/api/students/[id].ts";
 import * as $api_students_index from "./routes/api/students/index.ts";
 import * as $index from "./routes/index.tsx";
-import * as $Nav from "./islands/Nav.tsx";
+import * as $NavPanel from "./islands/NavPanel.tsx";
 import * as $NewStudentForm from "./islands/NewStudentForm.tsx";
 import * as $StudentsListItem from "./islands/StudentsListItem.tsx";
 import * as $StudentsPanel from "./islands/StudentsPanel.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
-    routes: {
-        "./routes/_app.tsx": $_app,
-        "./routes/_middleware.ts": $_middleware,
-        "./routes/api/students/[id].ts": $api_students_id_,
-        "./routes/api/students/index.ts": $api_students_index,
-        "./routes/index.tsx": $index,
-    },
-    islands: {
-        "./islands/Nav.tsx": $Nav,
-        "./islands/NewStudentForm.tsx": $NewStudentForm,
-        "./islands/StudentsListItem.tsx": $StudentsListItem,
-        "./islands/StudentsPanel.tsx": $StudentsPanel,
-    },
-    baseUrl: import.meta.url,
+  routes: {
+    "./routes/_app.tsx": $_app,
+    "./routes/_middleware.ts": $_middleware,
+    "./routes/api/students/[id].ts": $api_students_id_,
+    "./routes/api/students/index.ts": $api_students_index,
+    "./routes/index.tsx": $index,
+  },
+  islands: {
+    "./islands/NavPanel.tsx": $NavPanel,
+    "./islands/NewStudentForm.tsx": $NewStudentForm,
+    "./islands/StudentsListItem.tsx": $StudentsListItem,
+    "./islands/StudentsPanel.tsx": $StudentsPanel,
+  },
+  baseUrl: import.meta.url,
 } satisfies Manifest;
 
 export default manifest;
