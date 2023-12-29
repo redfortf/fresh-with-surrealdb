@@ -11,7 +11,7 @@ interface Props {
 
 export default (props: Props) => {
     const deleteButtonHandler = async () => {
-        await fetch(`http://localhost:8000/api/students/${props.student.id}`, {
+        await fetch(`${window.location.href}api/students/${props.student.id}`, {
             method: "DELETE"
         });
         

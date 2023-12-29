@@ -9,14 +9,14 @@ interface Props {
     allStudents: Signal<StudentSchema[]>
 }
 
-export default (props: Props) => {  
+export default (props: Props) => {
     const lastNameInput = useSignal("");
     const firstNameInput = useSignal("");
 
     const submitButtonHandler = async () => {
         if (firstNameInput.value === "" || lastNameInput.value === "") return;
 
-        const response = await fetch("http://localhost:8000/api/students", {
+        const response = await fetch(`${window.location.href}api/students`, {
             method: "POST",
             body: JSON.stringify({
                 firstName: firstNameInput.value,
