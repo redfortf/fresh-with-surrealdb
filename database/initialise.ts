@@ -1,5 +1,5 @@
 import { LegacyCirqlStateless } from "cirql";
-import { host, port, user, pass, namespace, database } from "$/enviroment/database.ts";
+import { host, port, user, pass, namespace, database } from "$/environment/database.ts";
 
 const init_query = String.raw`
 -- Define namespace.

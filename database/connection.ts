@@ -1,6 +1,6 @@
 import { LegacyCirqlStateless } from "cirql";
 import initialiseSurreal from "$/database/initialise.ts";
-import { host, port, user, pass, namespace, database } from "$/enviroment/database.ts";
+import { host, port, user, pass, namespace, database } from "$/environment/database.ts";
 
 export default async () => {
     await initialiseSurreal();
