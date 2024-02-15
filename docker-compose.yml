@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    container_name: "surrealdb"
+    env_file: .env
+    entrypoint: 
+      - /surreal
+      - start
+      - --bind
+      - "$SURREAL_HOSTIP:$SURREAL_PORT"
+      - --user
+      - $SURREAL_USERNAME
+      - --pass
+      - $SURREAL_PASSWORD
+    ports: 
+      - "$SURREAL_HOSTIP:$SURREAL_PORT:$SURREAL_PORT"
+    restart: always
+    healthcheck:
+      test: ["CMD", "/surreal", "isready", "--conn", "http://$SURREAL_HOSTIP:$SURREAL_PORT"]
+      interval: 10s
+      timeout: 10s
+      retries: 1
+      start_period: 10s
+      start_interval: 5s
+
+  app:
+    image: fresh-with-surrealdb
+    container_name: "app"
+    env_file: .env
+    environment:
+      SURREAL_HOST: "http://surrealdb"
+    depends_on:
+      surrealdb:
+        condition: service_healthy
+    links:
+      - surrealdb
+    ports: 
+      - "$FRESH_HOSTIP:$FRESH_PORT:$FRESH_PORT"
+
